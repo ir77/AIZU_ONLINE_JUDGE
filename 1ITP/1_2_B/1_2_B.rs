@@ -1,22 +1,12 @@
 use std::io;
-use std::cmp::Ordering;
 
 fn main() {
     let (input1, input2, input3) = input_3_number();
 
-    match input1.cmp(&input2) {
-        Ordering::Greater => println!("No"),
-        Ordering::Equal => println!("No"),
-        Ordering::Less => {
-            match input2.cmp(&input3) {
-                Ordering::Greater => println!("No"),
-                Ordering::Equal => println!("No"),
-                Ordering::Less => {
-                    println!("Yes");
-                    return;
-                }        
-            }
-        },
+    if input1 < input2 && input2 < input3 {
+        println!("Yes");
+    } else {
+        println!("No")
     }
 }
 
