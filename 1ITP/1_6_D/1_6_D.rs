@@ -2,25 +2,14 @@ use std::io;
 
 fn main() {
     let number = input_number();
-    let n = number[0];
-    let m = number[1];
+    let n = number[0] as usize;
+    let m = number[1] as usize;
 
-    let mut a: Vec<Vec<i64>> = vec![];
-    for _ in 0..n {
-        a.push(input_number());
-    }
+    let a: Vec<Vec<i64>> = (0..n).map(|_| input_number()).collect();
+    let c: Vec<i64> = (0..m).map(|_| *input_number().first().unwrap()).collect();
 
-    let mut c: Vec<i64> = vec![];
-    for _ in 0..m {
-        let number = input_number();
-        c.push(number[0]);
-    }
-
-    for index in 0..n {
-       let mut sum = 0i64;
-       for index2 in 0..m {
-           sum += a[index as usize][index2 as usize] * c[index2 as usize];
-       }
+    for i in 0..n {
+       let sum = (0..m).fold(0, |sum, j| sum + a[i][j] * c[j]);
        println!("{}", sum);
     }
 }
