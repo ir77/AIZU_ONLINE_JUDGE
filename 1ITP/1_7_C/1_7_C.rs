@@ -13,19 +13,19 @@ fn main() {
         for j in 0..c {
             print!("{} ", rc[i][j]);
             if j == c - 1 {
-                let sum = rc[i].iter().fold(0, |sum, j| sum + j);
-                print!("{}", sum);
+                let rsum: i64 = rc[i].iter().sum();
+                print!("{}", rsum);
             }
         }
         println!("");
     }
-    let mut allsum = 0;
+    let mut sum = 0;
     for i in 0..c {
-        let sum = (0..r).fold(0, |sum, j| sum + rc[j][i]);
-        allsum += sum;
-        print!("{} ", sum);
+        let csum = (0..r).fold(0, |sum, j| sum + rc[j][i]);
+        sum += csum;
+        print!("{} ", csum);
     }
-    print!("{}", allsum);
+    print!("{}", sum);
     println!("");
 }
 
