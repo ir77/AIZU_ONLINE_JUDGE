@@ -5,18 +5,13 @@ fn main() {
     let n = input[0] as usize;
     let m = input[1] as usize;
     let l = input[2] as usize;
-    let mut nm: Vec<Vec<i64>> = vec![];
-    for _ in 0..n {
-        nm.push(input_number());
-    }
-    let mut ml: Vec<Vec<i64>> = vec![];
-    for _ in 0..m {
-        ml.push(input_number());
-    }
+    let nm: Vec<Vec<i64>> = (0..n).map(|_| input_number()).collect();
+    let ml: Vec<Vec<i64>> = (0..m).map(|_| input_number()).collect();
+
     for i in 0..n {
         for j in 0..l {
             let sum = (0..m).fold(0, |sum, k| sum + nm[i][k] * ml[k][j]);
-            print!("{}{}", sum, if j == l-1 { '\n' } else { ' ' });
+            print!("{}{}", sum, if j == l - 1 { '\n' } else { ' ' });
         }
     }
 }
