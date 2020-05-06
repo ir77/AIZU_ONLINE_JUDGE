@@ -1,16 +1,23 @@
 use std::io;
 
 fn main() {
-    let number = input_number();
-    let n = number[0] as usize;
-    let m = number[1] as usize;
+    loop {
+        let input = input_number();
+        let n = input[0];
+        let x = input[1];
+        if (n, x) == (0, 0) { break }
+        let mut answer = 0;
 
-    let a: Vec<Vec<i64>> = (0..n).map(|_| input_number()).collect();
-    let c: Vec<i64> = (0..m).map(|_| *input_number().first().unwrap()).collect();
-
-    for i in 0..n {
-        let sum = (1..m).fold(0, |sum, j| sum + a[i][j] * c[j]);
-        println!("{}", sum);
+        for i in 1..n - 1 {
+            for j in i+1..n {
+                for k in j+1..n + 1 {
+                    if i + j + k == x {
+                        answer += 1;
+                    }
+                }
+            }
+        }
+        println!("{}", answer);
     }
 }
 
