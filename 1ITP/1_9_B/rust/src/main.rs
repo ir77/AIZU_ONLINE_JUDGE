@@ -10,7 +10,21 @@ use std::io;
 use std::str::FromStr;
 
 fn main() {
-    let w = get_string_input();
+    loop {
+        let mut w = get_string_input();
+        if w == "-" {
+            break;
+        }
+        let m: usize = get_vec_input()[0];
+        for _ in 0..m {
+            let len = w.len();
+            let h: usize = get_vec_input()[0];
+            let suffix = w[h..len].to_string();
+            let prefix = &w[0..h];
+            w = suffix + prefix;
+        }
+        println!("{}", w);
+    }
 }
 
 #[allow(dead_code)]
