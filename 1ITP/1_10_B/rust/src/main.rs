@@ -15,8 +15,8 @@ fn main() {
     let b: f64 = input[1];
     let d: f64 = input[2] * std::f64::consts::PI / 180.0;
     let s = a * b * d.sin() / 2.0;
-    let c = (a * a * b * b - 2.0 * a * b * d.cos()).sqrt();
-    println!("{} {}", s, a + b + c);
+    let c = (a * a + b * b - 2.0 * a * b * d.cos()).sqrt();
+    println!("{} {} {}", s, a + b + c, 2.0 * s / a);
 }
 
 #[allow(dead_code)]
